@@ -171,8 +171,8 @@ func newPrometheusConfig(cmodel *MonitorConfigModel) *config.Config {
 	scrapeJobs = append(scrapeJobs, scrapeJob(dmMaster, dmMasterPattern, cmodel, buildAddressRelabelConfigByComponent(dmMaster))...)
 	var c = config.Config{
 		GlobalConfig: config.GlobalConfig{
-			ScrapeInterval:     model.Duration(15 * time.Second),
-			EvaluationInterval: model.Duration(15 * time.Second),
+			ScrapeInterval:     model.Duration(60 * time.Second),
+			EvaluationInterval: model.Duration(60 * time.Second),
 			ExternalLabels:     cmodel.ExternalLabels,
 		},
 		ScrapeConfigs:      scrapeJobs,
@@ -316,7 +316,7 @@ func scrapeJob(jobName string, componentPattern config.Regexp, cmodel *MonitorCo
 
 		scrapeconfig := &config.ScrapeConfig{
 			JobName:        fmt.Sprintf("%s-%s-%s", cluster.Namespace, cluster.Name, jobName),
-			ScrapeInterval: model.Duration(15 * time.Second),
+			ScrapeInterval: model.Duration(60 * time.Second),
 			Scheme:         "http",
 			HonorLabels:    true,
 			ServiceDiscoveryConfig: config.ServiceDiscoveryConfig{

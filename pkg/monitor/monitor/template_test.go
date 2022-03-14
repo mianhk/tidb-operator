@@ -339,7 +339,7 @@ remote_write:
 		RemoteWriteConfigs: []*config.RemoteWriteConfig{
 			{
 				URL:           &config.URL{URL: url},
-				RemoteTimeout: model.Duration(15 * time.Second),
+				RemoteTimeout: model.Duration(60 * time.Second),
 				WriteRelabelConfigs: []*config.RelabelConfig{
 					{
 						SourceLabels: model.LabelNames{
@@ -624,7 +624,7 @@ remote_write:
 		RemoteWriteConfigs: []*config.RemoteWriteConfig{
 			{
 				URL:           &config.URL{URL: url},
-				RemoteTimeout: model.Duration(15 * time.Second),
+				RemoteTimeout: model.Duration(60 * time.Second),
 				WriteRelabelConfigs: []*config.RelabelConfig{
 					{
 						SourceLabels: model.LabelNames{
